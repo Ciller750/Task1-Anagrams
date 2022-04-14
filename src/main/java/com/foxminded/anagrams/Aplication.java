@@ -7,28 +7,13 @@ Runs the program, reads a line, prints the answer to the console, prompts you to
  */
 public class Aplication {
     private static final Scanner scanner = new Scanner(System.in);
+    private static final Reverse reverse = new Reverse();
 
     public static void main(String[] args) {
-        new Aplication().start();
-    }
-
-    public void start(){
         do {
             System.out.print("Введите строку и мы её развернём, все введённые символы останутся на месте: ");
             String inputLine = scanner.nextLine();
-            String result = null;
-            char[] array = inputLine.toCharArray();
-            for (char check : array) {
-                if (!Character.isLetter(check)) {
-                    if (check != ' ') {
-                        result = new ReverseLine().reverseTheLatinLetters(inputLine);
-                        break;
-                    }
-                } else {
-                    result = new ReverseLine().reverseStringLine(inputLine);
-                }
-            }
-            System.out.println(result);
+            System.out.println(reverse.reverseLine(inputLine));
         } while (repeatReverseLine());
         scanner.close();
     }
